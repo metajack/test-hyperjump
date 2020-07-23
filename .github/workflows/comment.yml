@@ -1,0 +1,19 @@
+name: Comment on a PR/Issue (via hyperjump)
+
+on:
+  repository_dispatch:
+    types: [comment]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    name: Commenting via hyperjump
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: post comment
+        uses: ./.github/actions/comment
+        with:
+          github-token: ${{ secrets.HYPERJUMP_TOKEN }}
+          number: ${{ github.event.client_payload.number }}
+          comment: ${{ github.event.client_payload.comment }}
