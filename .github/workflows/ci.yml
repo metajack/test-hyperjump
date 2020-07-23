@@ -8,6 +8,7 @@ on:
 
 jobs:
   comment-on-prs:
+    runs-on: ubuntu-latest
     name: Comment on new/updated PRs
     steps:
       - name: checkout
