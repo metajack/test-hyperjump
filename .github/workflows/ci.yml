@@ -1,0 +1,18 @@
+name: Fake CI for testing hyperjump
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  comment-on-prs:
+    name: Comment on new/updated PRs
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: post comment
+        uses: ./.github/actions/post-comment
+        with:
+          comment: "this is a comment"

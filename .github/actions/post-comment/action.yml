@@ -1,0 +1,9 @@
+name: Comment on current issue/PR
+description: Comment on issue/PR (via hyperjump)
+inputs:
+  comment:
+    description: comment text
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
