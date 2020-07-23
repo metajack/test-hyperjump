@@ -18,6 +18,11 @@ async function main() {
         comment: comment,
       },
     };
+
+    console.log(`got request to comment on ${number} with "${comment}"`);
+    console.log(`sending:`);
+    console.log(body);
+ 
     const server = "http://metajack.im:9898/hyperjump/jump"; //process.env.HYPERJUMP_URL;
     await got.post(server, {
       retry: 0,
