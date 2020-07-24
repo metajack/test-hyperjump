@@ -5,17 +5,13 @@ async function main() {
   try {
     const github_token = core.getInput("github-token", {required: true});
     const comment = core.getInput("comment", {required: true});
+    const number = core.getInput("number", {required: true});
 
     const client = new github.getOctokit(github_token);
-    const context = github.context;
-    console.log("CONTEXT:");
-    console.log(context);
-    const issue = context.issue;
-
     await client.issues.createComment({
-      owner: issue.owner,
-      repo: issue.repo,
-      issue_number: issue.number,
+      owner: github.context.repository.owner.login,
+      repo: github.context.repository.name,
+      issue_number: number,
       body: comment,
     });
   } catch (error) {
