@@ -4155,12 +4155,10 @@ async function main() {
 
     const client = new github.getOctokit(github_token);
 
-    console.log(github.context.repository);
-    console.log(github.context.owner);
-    
+    const repository = github.context.payload.repository;
     await client.issues.createComment({
-      owner: github.context.repository.owner.login,
-      repo: github.context.repository.name,
+      owner: repository.owner.login,
+      repo: repository.name,
       issue_number: number,
       body: comment,
     });
