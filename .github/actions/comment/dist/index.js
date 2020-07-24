@@ -40,7 +40,7 @@ require('./sourcemap-register.js');module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(104);
+/******/ 		return __webpack_require__(676);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -157,37 +157,6 @@ function onceStrict (fn) {
 /***/ (function(module) {
 
 module.exports = require("os");
-
-/***/ }),
-
-/***/ 104:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
-
-const core = __webpack_require__(470);
-const github = __webpack_require__(469);
-
-async function main() {
-  try {
-    const github_token = core.getInput("github-token", {required: true});
-    const comment = core.getInput("comment", {required: true});
-
-    const client = new github.getOctokit(github_token);
-    const context = github.context;
-    const issue = context.issue;
-
-    await client.issues.createComment({
-      owner: issue.owner,
-      repo: issue.repo,
-      issue_number: issue.number,
-      body: comment,
-    });
-  } catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-main();
-
 
 /***/ }),
 
@@ -4169,6 +4138,39 @@ module.exports = require("net");
 /***/ (function(module) {
 
 module.exports = require("util");
+
+/***/ }),
+
+/***/ 676:
+/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+
+const core = __webpack_require__(470);
+const github = __webpack_require__(469);
+
+async function main() {
+  try {
+    const github_token = core.getInput("github-token", {required: true});
+    const comment = core.getInput("comment", {required: true});
+
+    const client = new github.getOctokit(github_token);
+    const context = github.context;
+    console.log("CONTEXT:");
+    console.log(context);
+    const issue = context.issue;
+
+    await client.issues.createComment({
+      owner: issue.owner,
+      repo: issue.repo,
+      issue_number: issue.number,
+      body: comment,
+    });
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
+
+main();
+
 
 /***/ }),
 

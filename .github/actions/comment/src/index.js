@@ -8,6 +8,8 @@ async function main() {
 
     const client = new github.getOctokit(github_token);
     const context = github.context;
+    console.log("CONTEXT:");
+    console.log(context);
     const issue = context.issue;
 
     await client.issues.createComment({

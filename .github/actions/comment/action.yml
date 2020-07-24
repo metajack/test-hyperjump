@@ -5,6 +5,7 @@ inputs:
     description: GitHub token
     required: true
   number:
+    required: true
     description: Issue/PR number
   comment:
     description: The comment text
