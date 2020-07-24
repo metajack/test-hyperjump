@@ -8,6 +8,10 @@ async function main() {
     const number = core.getInput("number", {required: true});
 
     const client = new github.getOctokit(github_token);
+
+    console.log(github.context.repository);
+    console.log(github.context.owner);
+    
     await client.issues.createComment({
       owner: github.context.repository.owner.login,
       repo: github.context.repository.name,
