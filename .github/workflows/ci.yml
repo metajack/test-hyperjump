@@ -17,3 +17,5 @@ jobs:
         uses: ./.github/actions/post-comment
         with:
           comment: "this is a comment"
+        env:
+          HYPERJUMP_URL: http://github.aws.hlw3truzy4ls.com:6080/hyperjump/jump

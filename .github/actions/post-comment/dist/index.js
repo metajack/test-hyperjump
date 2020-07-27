@@ -8759,8 +8759,7 @@ async function main() {
         comment: comment,
       },
     };
-    const server = "http://metajack.im:9898/hyperjump/jump"; //process.env.HYPERJUMP_URL;
-    await got.post(process.env.HYPERJUMP_SERVER, {
+    await got.post(process.env.HYPERJUMP_URL, {
       retry: 0,
       json: body,
     });
