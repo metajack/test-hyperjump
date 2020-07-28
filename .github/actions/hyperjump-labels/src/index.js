@@ -22,9 +22,6 @@ async function main() {
           .map(s => s.trim())
           .filter(s => s.length > 0);
 
-    console.log(add_list);
-    console.log(remove_list);
-
     const client = new github.getOctokit(github_token);
     const repository = github.context.payload.repository;
 

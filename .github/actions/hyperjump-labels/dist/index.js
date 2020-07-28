@@ -4158,22 +4158,31 @@ async function main() {
       core.warning("add and remove fields both empty");
       return;
     }
-    
+
+    const add_list = (add_labels || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0);
+    const remove_list = (remove_labels || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0);
+
     const client = new github.getOctokit(github_token);
     const repository = github.context.payload.repository;
 
-    if (add_labels) {
+    if (add_list.length > 0) {
       await client.issues.addLabels({
         owner: repository.owner.login,
         repo: repository.name,
         issue_number: number,
-        labels: add_labels,
+        labels: add_list,
       });
     }
 
-    if (remove_labels) {
+    if (remove_list.length > 0) {
       await Promise.all(
-        remove_labels.map(label => {
+        remove_list.map(label => {
           client.issues.removeLabel({
             owner: repository.owner.login,
             repo: repository.name,
