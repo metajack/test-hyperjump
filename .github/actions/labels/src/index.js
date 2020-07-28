@@ -12,6 +12,9 @@ async function main() {
     const add_labels = core.getInput("add", {required: false});
     const remove_labels = core.getInput("remove", {required: false});
 
+    const add_list = add_labels.split(",").map(s => s.trim());
+    const remove_list = remove_labels.split(",").map(s => s.trim());
+
     // trigger the hyperjump
     const body = {
       owner: owner,
@@ -19,8 +22,8 @@ async function main() {
       type: "labels",
       args: {
         number: number,
-        add: add,
-        remove: remove,
+        add: add_list,
+        remove: remove_list,
       },
     };
     await got.post(hyperjump_url, {
