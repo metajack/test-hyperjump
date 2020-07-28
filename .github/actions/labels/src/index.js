@@ -12,8 +12,14 @@ async function main() {
     const add_labels = core.getInput("add", {required: false});
     const remove_labels = core.getInput("remove", {required: false});
 
-    const add_list = add_labels.split(",").map(s => s.trim());
-    const remove_list = remove_labels.split(",").map(s => s.trim());
+    const add_list = (add_labels || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0);
+    const remove_list = (remove_labels || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0);
 
     // trigger the hyperjump
     const body = {
