@@ -17,4 +17,14 @@ jobs:
         uses: ./.github/actions/comment
         with:
           comment: "this is a comment"
-
+  label-prs:
+    runs-on: ubuntu-latest
+    name: label PRs
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: add testing label
+        uses: ./.github/actions/labels
+        with:
+          add: testing
+          remove: invalid
