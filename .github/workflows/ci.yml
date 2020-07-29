@@ -17,4 +17,6 @@ jobs:
         uses: ./.github/actions/comment
         with:
           comment: "this is a comment"
+          tag: ci
+          delete-older: true
 
