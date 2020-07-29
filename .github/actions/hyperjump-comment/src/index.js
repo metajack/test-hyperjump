@@ -27,7 +27,7 @@ async function main() {
         repo: repository.name,
         issue_number: number,
       });
-      cosnole.log(comments);
+      console.log(comments);
       for (let c of comments.data) {
         console.log(c);
         if (c.user.login == "github-actions") {
