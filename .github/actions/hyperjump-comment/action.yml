@@ -10,6 +10,12 @@ inputs:
   comment:
     description: comment text
     required: true
+  tag:
+    description: metadata tag
+    required: true
+  delete-older:
+    description: delete older comments with same tag
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
