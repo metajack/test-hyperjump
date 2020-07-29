@@ -1,14 +1,8 @@
-name: Comment
-description: Comment on a PR (intended to be via hyperjump)
+name: Comment on issue
+description: Comment on issue
 inputs:
-  github-token:
-    description: GitHub token
-    required: true
-  number:
-    required: true
-    description: Issue/PR number
   comment:
-    description: The comment text
+    description: comment text
     required: true
 runs:
   using: 'node12'

@@ -1,0 +1,15 @@
+name: (hyperjump) comment
+description: (hyperjump) Backend for comment action
+inputs:
+  github-token:
+    description: GitHub token
+    required: true
+  number:
+    description: issue number
+    required: true
+  comment:
+    description: comment text
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

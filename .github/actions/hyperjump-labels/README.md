@@ -1,8 +1,9 @@
 # hyperjump-labels
 
 This is the backend for the `labels` action. It is intended to receive
-requests from the hyperjump server with the `labels` type and add and remove
-the requested labels from a specified issue or PR.
+requests from the hyperjump server, via the `repository_dispatch` trigger,
+with the `labels` type and add and remove the requested labels from a
+specified issue or PR.
 
 This should not be used directly in normal workflows.
 

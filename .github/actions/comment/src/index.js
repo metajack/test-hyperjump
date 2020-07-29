@@ -1,20 +1,28 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
+const got = require("got");
+const process = require("process");
+
+const hyperjump_url = "http://github.aws.hlw3truzy4ls.com:6080/hyperjump/jump";
 
 async function main() {
   try {
-    const github_token = core.getInput("github-token", {required: true});
+    const { owner, repo, number } = github.context.issue;
     const comment = core.getInput("comment", {required: true});
-    const number = core.getInput("number", {required: true});
 
-    const client = new github.getOctokit(github_token);
-
-    const repository = github.context.payload.repository;
-    await client.issues.createComment({
-      owner: repository.owner.login,
-      repo: repository.name,
-      issue_number: number,
-      body: comment,
+    // trigger the hyperjump
+    const body = {
+      owner: owner,
+      repo: repo,
+      type: "comment",
+      args: {
+        number: number,
+        comment: comment,
+      },
+    };
+    await got.post(hyperjump_url, {
+      retry: 0,
+      json: body,
     });
   } catch (error) {
     core.setFailed(error.message);
