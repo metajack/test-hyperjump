@@ -14,8 +14,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: post comment
-        uses: ./.github/actions/post-comment
+        uses: ./.github/actions/comment
         with:
           comment: "this is a comment"
-        env:
-          HYPERJUMP_URL: http://github.aws.hlw3truzy4ls.com:6080/hyperjump/jump
+
