@@ -4173,6 +4173,7 @@ async function main() {
         issue_number: number,
       });
       for (let c of comments.data) {
+        console.log(c);
         if (c.user.login == "github-actions") {
           const m = extract_metadata(c.body);
           console.log("extracted metadata");
