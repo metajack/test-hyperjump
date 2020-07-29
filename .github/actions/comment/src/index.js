@@ -9,6 +9,8 @@ async function main() {
   try {
     const { owner, repo, number } = github.context.issue;
     const comment = core.getInput("comment", {required: true});
+    const tag = core.getInput("tag", {required: false});
+    const delete_older = core.getInput("delete-older", {required: false}) || false;
 
     // trigger the hyperjump
     const body = {
@@ -18,6 +20,8 @@ async function main() {
       args: {
         number: number,
         comment: comment,
+        tag: tag,
+        delete_older: delete_older,
       },
     };
     await got.post(hyperjump_url, {
