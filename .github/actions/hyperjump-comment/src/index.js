@@ -29,8 +29,6 @@ async function main() {
       for (let c of comments.data) {
         if (c.user.login == "github-actions[bot]") {
           const m = extract_metadata(c.body);
-          console.log("extracted metadata");
-          console.log(m);
           if ("tag" in m && m["tag"] == tag) {
             await client.issues.deleteComment({
               owner: repository.owner.login,
