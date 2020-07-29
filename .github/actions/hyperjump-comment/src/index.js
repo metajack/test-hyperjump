@@ -55,9 +55,9 @@ async function main() {
 
 function extract_metadata(text) {
   const re = /<!-- metadata: (.*?) -->/;
-  const metadata_text = re.match(text);
-  if (re) {
-    return JSON.parse(metdata_text);
+  const metadata_text = text.match(re);
+  if (metadata_text) {
+    return JSON.parse(metdata_text[0]);
   }
   return {};
 }
