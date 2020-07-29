@@ -4165,6 +4165,7 @@ async function main() {
 
     const repository = github.context.payload.repository;
 
+    console.log("if delete_older " + delete_older);
     if (delete_older) {
       // search for comments with the same tag and delete them
       const comments = await client.issues.listComments({
@@ -4172,6 +4173,7 @@ async function main() {
         repo: repository.name,
         issue_number: number,
       });
+      cosnole.log(comments);
       for (let c of comments.data) {
         console.log(c);
         if (c.user.login == "github-actions") {
