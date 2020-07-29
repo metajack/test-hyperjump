@@ -25,3 +25,17 @@ Here's an example workflow using this action:
 ### `comment`
 
 The comment text.
+
+### `tag`
+
+A string tag that will be added to the hidden metadata of the
+comment. Defaults to "unknown".
+
+Since all comments come from the `github-actions` user, this allows workflows
+to distinguish specific comments if needed, for example, when using
+`delete-older`.
+
+### `delete-older`
+
+If set to true, older comments with the same tag will be deleted before a new
+comment is posted. This can be used to make the workflow less chatty.
