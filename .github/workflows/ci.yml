@@ -7,14 +7,24 @@ on:
       - synchronize
 
 jobs:
-  comment-on-prs:
+  # comment-on-prs:
+  #   runs-on: ubuntu-latest
+  #   name: Comment on new/updated PRs
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v2
+  #     - name: post comment
+  #       uses: ./.github/actions/comment
+  #       with:
+  #         comment: "this is a comment"
+
+  ask-for-review:
     runs-on: ubuntu-latest
-    name: Comment on new/updated PRs
+    name: request review
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: post comment
-        uses: ./.github/actions/comment
+      - name: review request
+        uses: ./.github/actions/request-review
         with:
-          comment: "this is a comment"
-
+          teams: dep-audit
