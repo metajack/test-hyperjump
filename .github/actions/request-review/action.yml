@@ -1,0 +1,9 @@
+name: Request review
+description: Request review on a PR
+inputs:
+  reviewers:
+    description: reviewer list (comma separated)
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
