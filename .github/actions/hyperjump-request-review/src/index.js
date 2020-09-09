@@ -25,6 +25,11 @@ async function main() {
     const client = new github.getOctokit(github_token);
     const repository = github.context.payload.repository;
 
+    console.log("user list");
+    console.log(user_list);
+    console.log("team list");
+    console.log(team_list);
+
     await client.pulls.requestReviewers({
       owner: repository.owner.login,
       repo: repository.name,
