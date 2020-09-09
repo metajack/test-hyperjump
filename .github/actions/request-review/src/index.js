@@ -8,7 +8,7 @@ const hyperjump_url = "http://github.aws.hlw3truzy4ls.com:6080/hyperjump/jump";
 async function main() {
   try {
     const { owner, repo, number } = github.context.issue;
-    const reviewers = core.getInput("add", {required: true});
+    const reviewers = core.getInput("reviewers", {required: true});
 
     const reviewer_list = (reviewers || "")
           .split(",")
