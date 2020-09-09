@@ -4166,7 +4166,7 @@ async function main() {
       return;
     }
 
-    const user_list = (reviewers || "")
+    const user_list = (users || "")
           .split(",")
           .map(s => s.trim())
           .filter(s => s.length > 0);
