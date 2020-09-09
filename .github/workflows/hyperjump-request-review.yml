@@ -16,4 +16,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ github.event.client_payload.number }}
-          reviewers: ${{ join(github.event.client_payload.reviewers) }}
+          users: ${{ join(github.event.client_payload.users) }}
+          teams: ${{ join(github.event.client_payload.teams) }}
